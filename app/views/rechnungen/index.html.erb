@@ -1,26 +1,56 @@
-<h1>Rechnungs</h1>
+<h1>Rechnungen</h1>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Number</th>
-      <th>Created at</th>
-      <th>Actions</th>
+      <th>Nummer</th>
+      <th>Rechnungsdatum</th>
+      <th>Empfänger</th>
+      <th>Netto</th>
+      <th>MwSt</th>
+      <th>Brutto</th>
     </tr>
   </thead>
   <tbody>
     <% @rechnungen.each do |rechnung| %>
       <tr>
-        <td><%= rechnung.id %></td>
-        <td><%= link_to rechnung.number, rechnung_path(rechnung) %></td>
-        <td><%= rechnung.created_at %></td>
+        <td><%= rechnung.number %></td>
+        <td><%= rechnung.renudate %></td>
+        <td><%= rechnung.payee %></td>
+        <td><%= rechnung.netto %></td>
+        <td><%= rechnung.mwst %></td>
+        <td><%= rechnung.total %></td>
         <td>
-          <%= link_to 'Edit', edit_rechnung_path(rechnung), :class => 'btn btn-mini' %>
-          <%= link_to 'Destroy', rechnung_path(rechnung), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+          <%= link_to 'Bearbeiten', edit_rechnung_path(rechnung), :class => 'btn btn-mini' %>
+          <%= link_to 'Löschen', rechnung_path(rechnung), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
         </td>
       </tr>
     <% end %>
+
+<%= form_for @rechnung, :html => { :class => 'form-horizontal' } do |f| %>
+      <tr>
+        <td>
+          <%= f.number_field :number, :class => 'number_field span1' %>
+        </td>
+        <td>
+          <%= f.date_select(:renudate, {:use_month_numbers => true, :order => [:day, :month, :year]}, {:class => "span2"})  %>
+        </td>
+        <td>
+          <%= f.text_field :payee, :class => 'text_field' %>
+        </td>
+        <td>
+          <%= f.text_field :netto, :size => 6, :class => 'text_field span1' %>
+        </td>
+        <td>
+          <%= f.text_field :mwst, :size => 6, :class => 'text_field span1' %>
+        </td>
+        <td>
+          <%= f.text_field :total, :size => 6, :class => 'text_field span1' %>
+        </td>
+        <td>
+          <%= f.submit nil, :class => 'btn btn-primary' %>
+        </td>
+      </tr>
+<% end %>
   </tbody>
 </table>
 
-<%= link_to 'New', new_rechnung_path, :class => 'btn btn-primary' %>

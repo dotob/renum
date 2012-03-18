@@ -3,6 +3,7 @@ class RechnungenController < ApplicationController
   # GET /rechnungen.json
   def index
     @rechnungen = Rechnung.all
+    @rechnung = Rechnung.new
 
     respond_to do |format|
       format.html # index.html.erb

@@ -10,6 +10,13 @@
     </div>
 
     <div class="control-group">
+      <%= f.label :renudate, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.date_select :renudate, :class => 'number_field', :use_month_numbers => true, :order => [:day, :month, :year] %>
+      </div>
+    </div>
+
+    <div class="control-group">
       <%= f.label :payee, :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :payee, :class => 'text_field' %>
@@ -17,9 +24,9 @@
     </div>
 
     <div class="control-group">
-      <%= f.label :total, :class => 'control-label' %>
+      <%= f.label :netto, :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_field :total, :class => 'text_field' %>
+        <%= f.text_field :netto, :class => 'text_field' %>
       </div>
     </div>
 
@@ -31,9 +38,9 @@
     </div>
 
     <div class="control-group">
-      <%= f.label :netto, :class => 'control-label' %>
+      <%= f.label :total, :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_field :netto, :class => 'text_field' %>
+        <%= f.text_field :total, :class => 'text_field' %>
       </div>
     </div>
 
