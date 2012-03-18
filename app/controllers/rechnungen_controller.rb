@@ -2,8 +2,11 @@ class RechnungenController < ApplicationController
   # GET /rechnungen
   # GET /rechnungen.json
   def index
-    @rechnungen = Rechnung.all
+    @rechnungen = Rechnung.order("number")
     @rechnung = Rechnung.new
+    max_re = Rechnung.maximum("number")
+    @max_number = max_re.number unless max_re else 1
+    @rechnung.number = @max_number
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,7 +48,7 @@ class RechnungenController < ApplicationController
 
     respond_to do |format|
       if @rechnung.save
-        format.html { redirect_to @rechnung, notice: 'Rechnung was successfully created.' }
+        format.html { redirect_to rechnungen_path, notice: 'Rechnung was successfully created.' }
         format.json { render json: @rechnung, status: :created, location: @rechnung }
       else
         format.html { render action: "new" }
@@ -61,7 +64,7 @@ class RechnungenController < ApplicationController
 
     respond_to do |format|
       if @rechnung.update_attributes(params[:rechnung])
-        format.html { redirect_to @rechnung, notice: 'Rechnung was successfully updated.' }
+        format.html { redirect_to rechnungen_path, notice: 'Rechnung was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

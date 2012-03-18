@@ -1,4 +1,4 @@
-<h1>Rechnungen</h1>
+<h1>Rechnungen:</h1>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -14,7 +14,7 @@
     <% @rechnungen.each do |rechnung| %>
       <tr>
         <td><%= rechnung.number %></td>
-        <td><%= rechnung.renudate %></td>
+        <td><%= l rechnung.renudate, :format => :default %></td>
         <td><%= rechnung.payee %></td>
         <td><%= rechnung.netto %></td>
         <td><%= rechnung.mwst %></td>
@@ -29,7 +29,7 @@
 <%= form_for @rechnung, :html => { :class => 'form-horizontal' } do |f| %>
       <tr>
         <td>
-          <%= f.number_field :number, :class => 'number_field span1' %>
+          <%= f.number_field :number, :min => @max_number, :class => 'number_field span1' %>
         </td>
         <td>
           <%= f.date_select(:renudate, {:use_month_numbers => true, :order => [:day, :month, :year]}, {:class => "span2"})  %>
@@ -47,7 +47,7 @@
           <%= f.text_field :total, :size => 6, :class => 'text_field span1' %>
         </td>
         <td>
-          <%= f.submit nil, :class => 'btn btn-primary' %>
+          <%= f.submit 'Neu', :class => 'btn btn-primary' %>
         </td>
       </tr>
 <% end %>
