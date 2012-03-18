@@ -1,0 +1,26 @@
+<h1>Rechnungs</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Number</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @rechnungen.each do |rechnung| %>
+      <tr>
+        <td><%= rechnung.id %></td>
+        <td><%= link_to rechnung.number, rechnung_path(rechnung) %></td>
+        <td><%= rechnung.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_rechnung_path(rechnung), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', rechnung_path(rechnung), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New', new_rechnung_path, :class => 'btn btn-primary' %>

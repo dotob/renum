@@ -1,0 +1,2 @@
+module RechnungsHelper
+end

@@ -1,0 +1,32 @@
+<h1>Rechnung</h1>
+
+<p>
+  <b>Number</b><br>
+  <%= @rechnung.number %>
+</p>
+
+<p>
+  <b>Payee</b><br>
+  <%= @rechnung.payee %>
+</p>
+
+<p>
+  <b>Total</b><br>
+  <%= @rechnung.total %>
+</p>
+
+<p>
+  <b>Mwst</b><br>
+  <%= @rechnung.mwst %>
+</p>
+
+<p>
+  <b>Netto</b><br>
+  <%= @rechnung.netto %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', rechnungen_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_rechnung_path(@rechnung), :class => 'btn' %>
+  <%= link_to 'Delete', rechnung_path(@rechnung), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

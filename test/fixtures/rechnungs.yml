@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  number: 1
+  payee: MyString
+  total: 9.99
+  mwst: 9.99
+  netto: 9.99
+
+two:
+  number: 1
+  payee: MyString
+  total: 9.99
+  mwst: 9.99
+  netto: 9.99
