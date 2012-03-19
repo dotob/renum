@@ -7,7 +7,10 @@ gem 'rails', '3.2.2'
 
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 
-gem 'sqlite3'
+group :development, :test do
+	gem 'sqlite3'
+end
+
 gem 'pg'
 
 
