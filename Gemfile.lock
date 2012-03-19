@@ -61,8 +61,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.2.0)
-    commonjs (0.2.0)
-      therubyracer (~> 0.9.9)
+    commonjs (0.2.5)
     devise (2.0.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -90,7 +89,7 @@ GEM
     less (2.0.11)
       commonjs (~> 0.2.0)
       therubyracer (~> 0.9.9)
-    less-rails (2.1.7)
+    less-rails (2.1.8)
       actionpack (>= 3.1)
       less (~> 2.0.7)
     libv8 (3.3.10.4)
@@ -133,7 +132,7 @@ GEM
       json (~> 1.4)
     remotipart (1.0.2)
     sass (3.1.15)
-    sass-rails (3.2.4)
+    sass-rails (3.2.5)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
@@ -149,9 +148,9 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
-    twitter-bootstrap-rails (2.0.3)
+    twitter-bootstrap-rails (2.0.1)
       actionpack (>= 3.1)
-      less-rails (~> 2.1.6)
+      less-rails (~> 2.1.5)
       railties (>= 3.1)
     tzinfo (0.3.32)
     uglifier (1.2.3)
@@ -173,5 +172,5 @@ DEPENDENCIES
   rails_admin!
   sass-rails (~> 3.2.3)
   sqlite3
-  twitter-bootstrap-rails
+  twitter-bootstrap-rails (~> 2.0.1.0)
   uglifier (>= 1.0.3)
