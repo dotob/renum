@@ -5,7 +5,7 @@ class RechnungenController < ApplicationController
     @rechnungen = Rechnung.order("number")
     @rechnung = Rechnung.new
     max_re = Rechnung.maximum("number")
-    @max_number = max_re.number unless max_re else 1
+    @max_number = if max_re.nil? then 1 else max_re.number end
     @rechnung.number = @max_number
 
     respond_to do |format|
