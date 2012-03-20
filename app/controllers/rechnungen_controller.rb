@@ -4,8 +4,8 @@ class RechnungenController < ApplicationController
   def index
     @rechnungen = Rechnung.order("number")
     @rechnung = Rechnung.new
-    max_re = Rechnung.maximum("number")
-    @max_number = if max_re.nil? then 1 else max_re.number end
+    max_re = Rechnung.find_by_number(Rechnung.maximum("number"))
+    @max_number = max_re.number + 1 if max_re else 1
     @rechnung.number = @max_number
 
     respond_to do |format|
