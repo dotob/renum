@@ -6,24 +6,27 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <a class="brand" href="#">Rechnungsnummern</a>
-      <div class="nav-collapse">
-        <ul class="nav">
-          <li><%= link_to "Rechnungen", rechnungen_path %></li>
-        </ul>
+<body class='rails_admin'>
+  <div class='navbar navbar-fixed-top'>
+    <div class='navbar-inner'>
+      <div class='container-fluid'>
+        <a class='brand' href='/admin/'>
+          Renum
+          <small>Rechnungen</small>
+        </a>
+        <div class='nav-collapse'>
+          <ul class='nav pull-right'>
+          <% if user_signed_in? %>
+            <li> <%= link_to(current_user.email+' abmelden', destroy_user_session_path, :method => :delete) %>        </li>
+            <li> <%= image_tag "#{(request.ssl? ? 'https://secure' : 'http://www')}.gravatar.com/avatar/#{Digest::MD5.hexdigest current_user.email}?s=30", :style => 'padding-top:5px' %></li>
+          <% else %>
+            <li> <%= link_to('Login', new_user_session_path)  %>  </li>
+          <% end %>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
 <div class="container">
   <div class="row">
     <div class="span12"><%= yield %></div>
