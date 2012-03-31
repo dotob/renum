@@ -1,11 +1,18 @@
 class RechnungenController < ApplicationController
-  # GET /rechnungen
+before_filter :authenticate_user!
+
+# GET /rechnungen
   # GET /rechnungen.json
   def index
     @rechnungen = Rechnung.order("number")
     @rechnung = Rechnung.new
-    max_re = Rechnung.find_by_number(Rechnung.maximum("number"))
-    @max_number = max_re.number + 1 if max_re else 1
+    r = Rechnung.maximum("number")
+    if r 
+      max_re = Rechnung.find_by_number(r)
+      @max_number = if max_re then max_re.number + 1 else 1 end
+    else
+      @max_number = 1
+    end
     @rechnung.number = @max_number
 
     respond_to do |format|
